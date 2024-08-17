@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('api/photos', photoRouter);
+app.use('/api/photos', photoRouter);
 
 
 app.listen(PORT, () => {
