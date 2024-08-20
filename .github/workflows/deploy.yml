@@ -23,6 +23,12 @@ jobs:
 
       - name: Build project
         run: npm run build
+      
+      - name: Prepare environment for Google Cloud credentials
+      run: |
+        mkdir -p $HOME/
+        touch $HOME/gcp-key.json
+        ls -la $HOME/
 
       - name: Deploy to Google App Engine
         env:
