@@ -25,7 +25,7 @@ jobs:
         run: npm run build
       
       - name: Prepare environment for Google Cloud credentials
-      run: |
+        run: |
         mkdir -p $HOME/
         touch $HOME/gcp-key.json
         ls -la $HOME/
