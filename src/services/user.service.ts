@@ -14,6 +14,7 @@ export class UserService {
             photos.forEach((user: User) => {
                 usersCache[user.id] = user;
             });
+            console.log('Users loaded');
         }
     }
 

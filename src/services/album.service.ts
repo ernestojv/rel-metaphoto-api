@@ -14,6 +14,7 @@ export class AlbumService {
             albums.forEach((album: Album) => {
                 albumsCache[album.id] = album;
             });
+            console.log('Albums loaded');
         }
     }
 

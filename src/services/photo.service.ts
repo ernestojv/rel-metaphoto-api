@@ -16,6 +16,7 @@ export class PhotoService {
             photos.forEach((photo: Photo) => {
                 photosCache[photo.id] = photo;
             });
+            console.log('Photos loaded');
         }
     }
 
