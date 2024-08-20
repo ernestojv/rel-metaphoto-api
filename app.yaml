@@ -4,6 +4,8 @@ instance_class: F1
 
 env_variables:
   NODE_ENV: 'production'
+  PORT: '3000'
+  API_URL: 'https://jsonplaceholder.typicode.com/'
 
 handlers:
   - url: /.*
