@@ -18,7 +18,7 @@ export const getPhotoById = async (req: Request, res: Response) => {
 export const getFilteredPhotos = async (req: Request, res: Response) => {
     try {
         const filters = req.query;
-        const limit = parseInt(req.query.limit as string) || 10;
+        const limit = parseInt(req.query.limit as string) || 0;
         const offset = parseInt(req.query.offset as string) || 0;
 
         const photos = await photoService.filterPhotos(filters, limit, offset);
