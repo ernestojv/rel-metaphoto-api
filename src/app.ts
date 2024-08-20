@@ -13,6 +13,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Meta Photo API, go to /api/photos');
+});
+
 app.use('/api/photos', photoRouter);
 
 app.listen(PORT, async () => {
