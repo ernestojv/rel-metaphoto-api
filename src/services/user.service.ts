@@ -1,6 +1,5 @@
 import Boom from '@hapi/boom';
 import 'dotenv/config';
-import { AlbumService } from './album.service';
 import { User } from '../interfaces/User';
 
 const apiURL = process.env.API_URL;
@@ -9,12 +8,18 @@ export class UserService {
 
     public async loadInitialData(): Promise<void> {
         {
-            const response = await fetch(`${apiURL}/users`);
-            let photos = await response.json();
-            photos.forEach((user: User) => {
-                usersCache[user.id] = user;
-            });
-            console.log('Users loaded');
+            try {
+                const response = await fetch(`${apiURL}/users`);
+                let users = await response.json();
+                users.forEach((user: User) => {
+                    usersCache[user.id] = user;
+                });
+                console.log('Users loaded');
+            } catch (error: any) {
+                console.log(error);
+                throw Boom.internal(error);
+
+            }
         }
     }
 

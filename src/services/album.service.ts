@@ -9,12 +9,17 @@ const userService = new UserService();
 export class AlbumService {
     public async loadInitialData(): Promise<void> {
         {
-            const response = await fetch(`${apiURL}/albums`);
-            let albums = await response.json();
-            albums.forEach((album: Album) => {
-                albumsCache[album.id] = album;
-            });
-            console.log('Albums loaded');
+            try {
+                const response = await fetch(`${apiURL}/albums`);
+                let albums = await response.json();
+                albums.forEach((album: Album) => {
+                    albumsCache[album.id] = album;
+                });
+                console.log('Albums loaded');
+            } catch (error: any) {
+                console.log(error);
+                throw Boom.internal(error);
+            }
         }
     }
 

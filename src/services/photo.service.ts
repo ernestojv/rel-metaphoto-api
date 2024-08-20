@@ -11,12 +11,17 @@ export class PhotoService {
 
     public async loadInitialData(): Promise<void> {
         {
-            const response = await fetch(`${apiURL}/photos`);
-            let photos = await response.json();
-            photos.forEach((photo: Photo) => {
-                photosCache[photo.id] = photo;
-            });
-            console.log('Photos loaded');
+            try {
+                const response = await fetch(`${apiURL}/photos`);
+                let photos = await response.json();
+                photos.forEach((photo: Photo) => {
+                    photosCache[photo.id] = photo;
+                });
+                console.log('Photos loaded');
+            } catch (error: any) {
+                console.log(error);
+                throw Boom.internal(error);
+            }
         }
     }
 
