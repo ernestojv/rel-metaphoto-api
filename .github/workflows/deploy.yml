@@ -34,7 +34,7 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
         run: |
-          echo $GOOGLE_APPLICATION_CREDENTIALS > ~/gcp-key.json
+          echo $GOOGLE_APPLICATION_CREDENTIALS > $HOME/gcp-key.json
           gcloud auth activate-service-account --key-file=~/gcp-key.json
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
           gcloud app deploy --quiet
