@@ -26,5 +26,5 @@ app.listen(PORT, async () => {
     await albumService.loadInitialData();
     const photoService = new PhotoService();
     await photoService.loadInitialData();
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}, MetaPhoto API is ready`);
 });
